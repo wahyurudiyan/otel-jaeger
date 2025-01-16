@@ -1,0 +1,23 @@
+services:
+  web-service:
+    container_name: service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      OTEL_SERVICE_NAME: service-otel-jaeger
+      JAEGER_GRPC_ENDPOINT: jaeger:4317
+    entrypoint: ["service"]
+    ports:
+      - 8080:8080
+  
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:latest
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: :9411
+    ports:
+      - 16686:16686 
+      - 4317:4317 
+      - 4318:4318 
+      - 9411:9411
