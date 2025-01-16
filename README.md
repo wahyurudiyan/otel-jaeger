@@ -1,4 +1,4 @@
-# otel-jaeger
+# Open Telemetry and Jaeger Simple Example
 This is just an example to implement opentelemetry with jaeger
 
 ## Running the app
